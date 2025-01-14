@@ -21,6 +21,7 @@ import { useEffect } from "react";
 import { Skeleton } from "./components/ui/skeleton";
 import PaypalReturnPage from "./pages/shopping/paypal-return";
 import PaymentSuccessPage from "./pages/shopping/payment-success";
+import SearchProducts from "./pages/shopping/search";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useSelector(
@@ -32,9 +33,8 @@ function App() {
   useEffect(() => {
     dispatch(checkAuth());
   }, [dispatch]);
-  
-  if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
 
+  if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
@@ -88,7 +88,7 @@ function App() {
           <Route path="account" element={<ShoppingAccount />} />
           <Route path="paypal-return" element={<PaypalReturnPage />} />
           <Route path="payment-success" element={<PaymentSuccessPage />} />
-
+          <Route path="search" element={<SearchProducts />} />
         </Route>
 
         <Route path="/unauth-page" element={<UnauthPage />} />
